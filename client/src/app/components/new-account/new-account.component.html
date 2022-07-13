@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="title2">
+            <h1>beemylawyer</h1>
+        </div>
+
+        <div class="outer">
+            <div class="middle">
+            
+                <div class="inner">
+                    <br>
+                    <br>
+                    <br>
+                    <h2 id="color">Choose profil picture</h2>
+                    <button id="avatarDE" (click)="openAvatar()"><span class='special-word'>1</span></button>
+                    
+                    <div class="email">    
+                        <mat-form-field class="input" floatLabel="always" appearance="outline" style="width: 300px;">
+                            <mat-label>email</mat-label>
+                            <input matInput id="mail" type="text" name="email" [(ngModel)]="mail">
+                        </mat-form-field> 
+                    </div>
+                    
+                    <div class="pseudo">
+                        <mat-form-field class="input" floatLabel="always" appearance="outline" style="width: 300px;">
+                            <mat-label>First name</mat-label>
+                            <input matInput id="name" type="text" name="username" [(ngModel)]="fname">
+                        </mat-form-field> 
+                    </div>
+                    
+                    <div class="pseudo">
+                        <mat-form-field class="input" floatLabel="always" appearance="outline" style="width: 300px;">
+                            <mat-label>Last name</mat-label>
+                            <input matInput id="name" type="text" name="username" [(ngModel)]="lname">
+                        </mat-form-field> 
+                    </div>
+
+
+                    <div class="pass">    
+                        <mat-form-field class="input" floatLabel="always" appearance="outline" style="width: 300px;">
+                            <mat-label>password</mat-label>
+                            <input matInput id="pass" type="password" name="password" [(ngModel)]="pass">
+                        </mat-form-field> 
+                    </div>
+
+                    <div class="pass">    
+                        <mat-form-field id="myForm" class="input" floatLabel="always" appearance="outline" style="width: 300px;"> 
+                            <mat-label>confirm password</mat-label>
+                            <input matInput id="passRepeat" type="password" name="passrepeat" [(ngModel)]="passRepeat">
+                        </mat-form-field> 
+                    </div>
+
+                    <div class="pseudo">
+                        <mat-form-field class="input" floatLabel="always" appearance="outline" style="width: 300px;">
+                            <mat-label>Phone number</mat-label>
+                            <input matInput id="name" type="text" name="username" [(ngModel)]="phoneNumber">
+                        </mat-form-field> 
+                    </div>
+
+                    
+                    <button mat-raised-button id="buttonMain6" (click)="closeClick()" style="width: 300px;" >confirm</button>
+                    <p id="already" (click)="cancelClick()">already have an account ? Go to login page</p>
+
+                    <div>
+                        <p id="error">{{error1}}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

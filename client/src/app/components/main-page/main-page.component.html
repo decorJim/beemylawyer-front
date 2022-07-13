@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+        <body>
+            <div id="title01">
+                <h1 id="title02">Bee my lawyer</h1>
+            </div> 
+    
+            <div class="outer">
+                <div class="middle">
+                    <div class="inner">
+    
+                        <h2 id="color">Welcome !</h2>
+    
+                        <main class="content">
+                            <router-outlet #outlet = "outlet"></router-outlet>
+                        <div class="pseudo">
+                            <mat-form-field class="input" floatLabel="always" appearance="outline">
+                                <mat-label>email </mat-label>
+                                <input matInput id="email" type="text" name="email" [(ngModel)]="email">
+                            </mat-form-field> 
+                        </div>
+    
+                        <div class="pass">    
+                            <mat-form-field class="input" floatLabel="always" appearance="outline">
+                                <mat-label>password</mat-label>
+                                <input matInput id="password" type="password" name="password" [(ngModel)]="password">
+                            </mat-form-field> 
+                        </div>
+                    </main>
+    
+                        <div>
+                            <p id="error">Error</p>
+                        </div>
+    
+                        <button mat-raised-button id="buttonMain" (click)="registerClick()">register</button>
+                        <button mat-raised-button id="buttonMain2" (click)="closeClick()">login</button>
+                        <button mat-raised-button id="buttonMain3" (click)="openSettings()">options</button>
+
+    
+                    </div>
+                </div>
+            </div>
+        </body>
+</html>

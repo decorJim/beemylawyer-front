@@ -1,0 +1,130 @@
+.wrapper {
+    position: relative;
+}
+
+#menu-container{
+   font-size: 20px;
+   width:100%;
+   background-color: #d6dbdb;
+}
+
+#title101 {
+    display: inline-block;
+}
+
+#menu-container div{
+    display:inline-block;
+    width:130px;
+    cursor: pointer;
+    padding: 5px 15px;
+    background: var(--light-color);
+    color: var(--dark-color-a);
+    border: 0;
+    font-size: 25px;
+    display: inline-block;
+
+    font-family:50px "Roboto", "Helvetica Neue", sans-serif;
+    font-weight: 900;
+    position: absolute;
+    left:725px;
+}
+
+#menu-container button{
+    display:inline-block;
+    width:130px;
+    cursor: pointer;
+    padding: 5px 15px;
+    background: var(--light-color);
+    color: var(--dark-color-a);
+    border: 0;
+    font-size: 25px;
+    display: inline-block;
+}
+
+
+
+.profile-container {
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
+    font-size: 24px;
+    width: 400px;
+    height: 363px;
+    outline: dashed 1px black;
+    background-color: #d6dbdb;
+    margin: auto;
+    border: 3px solid rgb(113, 128, 0);
+    padding: 10px;
+}
+
+.profile-container div {
+    /* Center horizontally*/
+    margin: 0 auto;
+    display:contents;
+
+    font-family:"Roboto", "Helvetica Neue", sans-serif;
+    font-size:15px;
+    
+}
+
+.name {
+    font-family:"Arial", "Helvetica Neue", sans-serif;
+    font-size:30px;
+    font-weight: 100;
+}
+
+
+
+
+#avatarDiv {
+    float: left;
+    width: 50%;
+}
+
+
+#logout {
+    float: right;
+    border: black;
+}
+
+#avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    // margin: 0 auto;
+    float: right;
+    margin-right: 20px;
+}
+
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.column2 {
+    float: left;
+    width: 50%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row {
+    margin-top: 250px;
+}
+
+.contact {
+   font-weight: 900;
+   display: inline;
+}
+
+.contact-info {
+   display: inline;
+}
+
+.edit {
+    background-color: aliceblue;
+}
+
