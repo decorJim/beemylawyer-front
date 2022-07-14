@@ -37,10 +37,30 @@
      </mat-form-field>
     </mat-grid-tile>
   </mat-grid-list>
+
   <div class="biobox">
     <h4>bio</h4>
     <textarea [(ngModel)] = "bio" value="{{ this.model.getBio() }}" rows="6" cols="50"></textarea>
   </div>
+
   <br>
+
+    <div class="skill-container" *ngFor="let skill of this.skills" >
+      <div class="skill">{{ skill }}</div>
+      <br>
+    </div>
+ 
+
+  <br>
+
+  <div class="skills">
+    <input #skill>
+    <button mat-icon-button style="background-color:red ;" (click)="addSkill(skill.value)">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <br>
+
   <button mat-button (click)="saveProfil()" mat-dialog-close style="float: right">Ok</button>
 </div>

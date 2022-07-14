@@ -16,6 +16,7 @@ export class EditProfilComponent implements OnInit {
 
   private readonly BASE_URL: string = URL;
 
+
   model:Profil;
   email:String;
   fname:String;
@@ -23,6 +24,7 @@ export class EditProfilComponent implements OnInit {
   cposition:String;
   phonenum:String;
   bio:String;
+  skills:String[]=[];
 
 
   ngOnInit() {
@@ -90,6 +92,11 @@ export class EditProfilComponent implements OnInit {
       });
     }
     this.dialog.close();
+  }
+
+  addSkill(skill:String):void {
+    this.skills.push(skill);
+    console.info(this.skills);
   }
 
 }

@@ -1,6 +1,6 @@
 .field {
     width: 600px;
-    height: 700px;
+    height: 400px;
     background-color: red;
     display: block;
 }
@@ -9,4 +9,26 @@
     border: 5px solid #FFFF00;
     text-align: center;
     background-color: #FFFF00;
+}
+
+.skills {
+    background-color: green;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-container {
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+
+}
+
+.skill {
+    width: fit-content;
+    height: 5px;
+    text-align: center;
+    display: block;
 }

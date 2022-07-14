@@ -35,6 +35,7 @@ import { EditProfilComponent } from './components/editProfil/editProfil.componen
 
 
 
+
 @NgModule({
     declarations: [
         AppComponent,  // add component that can use angular material declared below here
