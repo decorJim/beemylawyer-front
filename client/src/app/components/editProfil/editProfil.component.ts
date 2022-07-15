@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {  MatDialogRef } from '@angular/material/dialog';
 import { Profil } from '@app/classes/Profil';
 import { UserService } from '@app/services/user.service';
@@ -16,6 +16,7 @@ export class EditProfilComponent implements OnInit {
 
   private readonly BASE_URL: string = URL;
 
+  @ViewChild('skill') skillinput: ElementRef;
 
   model:Profil;
   email:String;
@@ -25,6 +26,8 @@ export class EditProfilComponent implements OnInit {
   phonenum:String;
   bio:String;
   skills:String[]=[];
+
+  oldSkills=new Map<Number,String>();
 
 
   ngOnInit() {
@@ -39,6 +42,8 @@ export class EditProfilComponent implements OnInit {
     this.cposition=this.model.getCposition();
     this.phonenum=this.model.getPhoneNumber();
     this.bio=this.model.getBio();
+    this.skills=this.model.getSkills();
+    console.log("skills",this.model.getSkills())
   }
 
   isDifferent():Boolean {
@@ -63,13 +68,22 @@ export class EditProfilComponent implements OnInit {
     return false;
   }
 
+  skillDifferent():String[] {
+    let diff:String[]=[];
+    this.skills.filter((skill)=>{
+      if(!this.model.getSkills().includes(skill)) {
+        diff.push(skill);
+      }
+    });
+    return diff;
+  }
+
   saveProfil() {
-    console.log("is empty",this.isEmpty());
     if(this.isEmpty() || this.isAbsent()) {
        alert("empty fields detected !");
        this.setInitialValue();
     }
-    else if(this.isDifferent()) {
+    else if(this.isDifferent() || this.skillDifferent().length==0) {
       const profile={
          id:this.model.getId(), 
          useremail:this.email,
@@ -77,7 +91,7 @@ export class EditProfilComponent implements OnInit {
          lname:this.lname,
          bio:this.bio,
          cposition:this.cposition,
-         skills:this.model.getSkills(),
+         skills:this.skills,
          pic:this.model.getPic(),
          phonenumber:this.phonenum
       }
@@ -91,12 +105,21 @@ export class EditProfilComponent implements OnInit {
         this.setInitialValue();
       });
     }
+    console.log(this.skillDifferent().length);
     this.dialog.close();
   }
 
   addSkill(skill:String):void {
     this.skills.push(skill);
-    console.info(this.skills);
+    console.info(this.skillinput.nativeElement.value);
+    this.skillinput.nativeElement.value="";
+  }
+
+  removeSkill(skill:String):void {
+    const index = this.skills.indexOf(skill);
+        if (index > -1) {
+            this.skills.splice(index, 1); 
+        }
   }
 
 }

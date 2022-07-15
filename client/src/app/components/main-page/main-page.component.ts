@@ -140,6 +140,7 @@ export class MainPageComponent implements OnInit{
         if(data.message=="SUCCESS") {
           let profilLink=this.BASE_URL+"user/profil/"+this.email;
           this.http.get<any>(profilLink).subscribe((data:ProfilInterface)=>{
+            console.log(data);
             let profil:Profil=new Profil(data);
             this.userService.setProfil(profil);
             this.userService.setUseremail(this.email);
