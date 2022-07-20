@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { SocketService } from '@app/services/socket/socket.service';
+import { SocketService } from '@app/services/socket/oldsocket';
 import { URL } from '../../../../constants';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { French, English} from '@app/interfaces/Langues';

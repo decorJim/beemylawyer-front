@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { SocketService } from '@app/services/socket/socket.service';
+import { SocketService } from '@app/services/socket/oldsocket';
 import { URL } from '../../../../constants';
 import { catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';

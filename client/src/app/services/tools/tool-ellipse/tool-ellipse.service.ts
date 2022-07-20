@@ -11,7 +11,7 @@ import { Tools } from '../../../interfaces/tools.interface';
 import { ToolIdConstants } from '../tool-id-constants';
 import { FilledShape } from '../tool-rectangle/filed-shape.model';
 import { LEFT_CLICK, RIGHT_CLICK } from '../tools-constants';
-import { SocketService } from '@app/services/socket/socket.service';
+import { SocketService } from '@app/services/socket/oldsocket';
 // import { EllipseCommand } from './ellipse-command';
 import { Point } from 'src/app/model/point.model';
 

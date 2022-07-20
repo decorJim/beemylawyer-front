@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { MatDialogRef } from '@angular/material/dialog';
-import { SocketService } from '@app/services/socket/socket.service';
+import { SocketService } from '@app/services/socket/oldsocket';
 import { LightGrey, DarkGrey, DeepPurple, LightBlue, LightPink } from '@app/interfaces/Themes';
 import { French, English } from '@app/interfaces/Langues';
 

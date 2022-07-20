@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { SocketService } from '@app/services/socket/socket.service';
+import { SocketService } from '@app/services/socket/oldsocket';
 import { catchError } from 'rxjs/operators';
 import { URL } from '../../../../constants';
 import { Router } from '@angular/router';

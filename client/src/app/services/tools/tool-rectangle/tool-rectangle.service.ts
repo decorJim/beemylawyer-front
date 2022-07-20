@@ -12,7 +12,7 @@ import { ToolIdConstants } from '../tool-id-constants';
 import { LEFT_CLICK, RIGHT_CLICK } from '../tools-constants';
 import { FilledShape } from './filed-shape.model';
 // import { RectangleCommand } from './rectangle-command';
-import { SocketService } from '@app/services/socket/socket.service';
+import { SocketService } from '@app/services/socket/oldsocket';
 import { Point } from 'src/app/model/point.model';
 //import { Point } from 'src/app/model/point.model';
 

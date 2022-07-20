@@ -11,7 +11,7 @@ import { INITIAL_WIDTH, LEFT_CLICK, RIGHT_CLICK } from '../tools-constants';
 import { Pencil } from './pencil.model';
 import { Renderer2 } from '@angular/core';
 import { Point } from 'src/app/model/point.model';
-import { SocketService } from '@app/services/socket/socket.service';
+import { SocketService } from '@app/services/socket/oldsocket';
 
 
 /// Service de l'outil pencil, permet de créer des polyline en svg

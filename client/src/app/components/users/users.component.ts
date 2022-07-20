@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Drawing } from '@app/classes/Drawing';
 import { DrawingInterface } from '@app/interfaces/DrawingInterface';
 import { DrawingTempService } from '@app/services/drawingTemp.service';
-import { SocketService } from '@app/services/socket/socket.service';
+import { SocketService } from '@app/services/socket/oldsocket';
 import { URL } from '../../../../constants';
 import { French, English} from '@app/interfaces/Langues';
 

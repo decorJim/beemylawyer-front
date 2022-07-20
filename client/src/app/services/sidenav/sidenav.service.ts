@@ -3,7 +3,7 @@ import { ToggleDrawerService } from '../toggle-drawer/toggle-drawer.service';
 import { Tools } from '../../interfaces/tools.interface';
 import { ToolsService } from '../tools/tools.service';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
-import { SocketService } from '@app/services/socket/socket.service';
+import { SocketService } from '@app/services/socket/oldsocket';
 import { DrawingService } from '../drawing/drawing.service';
 import { RendererProviderService } from '../renderer-provider/renderer-provider.service';
 import { SelectionToolService } from '../tools/selection-tool/selection-tool.service';

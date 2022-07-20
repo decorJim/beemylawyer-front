@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { SocketService } from './socket.service';
+import { SocketService } from './oldsocket';
 
 describe('Service: Socket', () => {
   beforeEach(() => {

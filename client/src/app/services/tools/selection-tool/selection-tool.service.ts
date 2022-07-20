@@ -13,7 +13,7 @@ import { ToolIdConstants } from '../tool-id-constants';
 import { LEFT_CLICK, RIGHT_CLICK } from '../tools-constants';
 import { SelectionCommandConstants } from './command-type-constant';
 import { SelectionTransformService } from './selection-transform.service';
-import { SocketService } from '@app/services/socket/socket.service';
+import { SocketService } from '@app/services/socket/oldsocket';
 import { ToolRectangleService } from '../tool-rectangle/tool-rectangle.service';
 import { ToolEllipseService } from '../tool-ellipse/tool-ellipse.service';
 import { PencilToolService } from '../pencil-tool/pencil-tool.service';

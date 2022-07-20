@@ -13,7 +13,7 @@ import { ToolsService } from '../tools/tools.service';
 import { EmitReturn } from './hotkeys-constants';
 import { HotkeysEmitterService } from './hotkeys-emitter/hotkeys-emitter.service';
 import { HotkeysEnablerService } from './hotkeys-enabler.service';
-import { SocketService } from '@app/services/socket/socket.service';
+import { SocketService } from '@app/services/socket/oldsocket';
 import { URL } from '../../../../constants';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
