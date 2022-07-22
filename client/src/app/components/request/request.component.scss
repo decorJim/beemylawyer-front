@@ -1,0 +1,50 @@
+.wrapper {
+    position: relative;
+}
+
+#menu-container{
+    font-size: 20px;
+    width:100%;
+    background-color: #d6dbdb;
+}
+
+
+#menu-container div{
+    display:inline-block;
+    width:130px;
+    cursor: pointer;
+    padding: 5px 15px;
+    background: var(--light-color);
+    color: var(--dark-color-a);
+    border: 0;
+    font-size: 25px;
+    display: inline-block;
+
+    font-family:50px "Roboto", "Helvetica Neue", sans-serif;
+    font-weight: 900;
+    position: absolute;
+    left:725px;
+}
+
+#menu-container button{
+    display:inline-block;
+    width:130px;
+    cursor: pointer;
+    padding: 5px 15px;
+    background: var(--light-color);
+    color: var(--dark-color-a);
+    border: 0;
+    font-size: 25px;
+    display: inline-block;
+}
+
+.signin {
+    position: relative;
+    left:1400px;
+    background-color: white;
+    font-size: 9px;
+    height: fit-content;
+    width: fit-content;
+}
+
+

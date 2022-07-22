@@ -32,6 +32,10 @@ export class SocketService {
     this.client.send("/app/profil",{},JSON.stringify(this.userService.getProfil()));
   }
 
+  public sendRan() {
+    this.client.send("/app/random",{},"213");
+  }
+
   public closeConnection() {
     this.webSocket.close();
   }

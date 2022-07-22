@@ -28,6 +28,7 @@ import { ProfilComponent } from './components/profil/profil.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditProfilComponent } from './components/editProfil/editProfil.component';
+import { RequestComponent } from './components/request/request.component';
 
 
 
@@ -49,6 +50,7 @@ import { EditProfilComponent } from './components/editProfil/editProfil.componen
         ProfilComponent,
         LogoutComponent,
         EditProfilComponent,
+        RequestComponent
     ],
     imports: [
         BrowserModule,

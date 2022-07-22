@@ -43,6 +43,7 @@ export class ProfilComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.profilTitle = English.profilTitle;
     this.info1 = English.info1;
     this.info2 = English.info2;
@@ -60,7 +61,6 @@ export class ProfilComponent implements OnInit {
   }
 
   openEditProfil() {
-    this.webSocketService.sendMessage();
     this.dialog.open(EditProfilComponent,{
       height: '60%',
       width: '43%'

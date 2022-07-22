@@ -11,8 +11,8 @@ import { fader } from '@assets/animations';
 import { UserService } from '@app/services/user.service';
 import { ProfilInterface } from '@app/interfaces/ProfilInterface';
 import { Profil } from '@app/classes/Profil';
-import { SocketService } from '@app/services/socket.service';
 import { OldSocketService } from '@app/services/socket/oldsocket';
+import { SocketService } from '@app/services/socket.service';
 
 
 
@@ -52,10 +52,10 @@ export class MainPageComponent implements OnInit{
 
   ngOnInit(): void {
     this.webSocketService.openConnection();
-    this.webSocketService.client.connect({},(frame:any)=>{
-      console.log(frame);
-      this.webSocketService.client.subscribe("/lawyers/public",(data:any)=>{
-        console.log("msg",data);
+    this.webSocketService.client.connect({},(frame)=>{
+      // at least one subscribe must be in the initial connection for socket to work
+      this.webSocketService.client.subscribe("/lawyers/public",(data)=>{
+        console.log(data);
       });
     });
     this.ref.detectChanges();
@@ -80,8 +80,8 @@ export class MainPageComponent implements OnInit{
       document.getElementById("buttonMain")!.style.color = LightGrey.text;
       document.getElementById("buttonMain2")!.style.backgroundColor = LightGrey.main;
       document.getElementById("buttonMain2")!.style.color = LightGrey.text;
-      document.getElementById("buttonMain3")!.style.backgroundColor = LightGrey.main;
-      document.getElementById("buttonMain3")!.style.color = LightGrey.text;
+      document.getElementById("requestButton")!.style.backgroundColor = LightGrey.main;
+      document.getElementById("requestButton")!.style.color = LightGrey.text;
       document.getElementById("title01")!.style.backgroundColor = LightGrey.main;
       document.getElementById("title01")!.style.color = LightGrey.text;
     }
@@ -199,5 +199,10 @@ export class MainPageComponent implements OnInit{
 
   avatar():void {
     this.router.navigate(['/','avatar']);
+  }
+
+  requestPage():void {
+    console.log("request page")
+    this.router.navigate(['/','request']);
   }
 }

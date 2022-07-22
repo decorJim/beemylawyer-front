@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {  MatDialogRef } from '@angular/material/dialog';
 import { Profil } from '@app/classes/Profil';
+import { SocketService } from '@app/services/socket.service';
 import { UserService } from '@app/services/user.service';
 import { URL } from '../../../../constants';
 
@@ -12,7 +13,7 @@ import { URL } from '../../../../constants';
 })
 export class EditProfilComponent implements OnInit {
 
-  constructor(public dialog: MatDialogRef<EditProfilComponent>,public userService:UserService, private http: HttpClient) { }
+  constructor(public dialog: MatDialogRef<EditProfilComponent>,public userService:UserService, private http: HttpClient,public webSocketService:SocketService) { }
 
   private readonly BASE_URL: string = URL;
 
@@ -103,6 +104,7 @@ export class EditProfilComponent implements OnInit {
         let profil:Profil=new Profil(data);
         this.userService.setProfil(profil);
         this.setInitialValue();
+        this.webSocketService.sendMessage();
       });
     }
     console.log(this.skillDifferent().length);
