@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { URL } from '../../../../constants';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { English} from '@app/interfaces/Langues';
 import { UserService } from '@app/services/user.service';
+import { URL } from '../../../../constants';
+
+
+
 
 
 @Component({
@@ -14,16 +18,19 @@ import { UserService } from '@app/services/user.service';
 
 export class LogoutComponent implements OnInit {
 
-  private readonly BASE_URL: string = URL;
   public qui: string;
   public cancel: string;
   public leave: string;
   public logout: string;
 
+  public BASE_URL=URL;
+
   constructor(
     public dialogRef: MatDialogRef<LogoutComponent>,
-    private http: HttpClient,
-    private userService:UserService
+    public dialogRefAlert:MatDialog,
+    public http:HttpClient,
+    public router:Router,
+    public userService:UserService
   ) { }
 
   ngOnInit() {
@@ -45,6 +52,7 @@ export class LogoutComponent implements OnInit {
     this.http.post<any>(link,{ useremail:this.userService.getUseremail()  }).subscribe((data: any) => {
       if (data.message == "SUCCESS") {
         this.dialogRef.close();
+        
       }   
     },(error:HttpErrorResponse)=>{
       console.error(error);
@@ -55,5 +63,9 @@ export class LogoutComponent implements OnInit {
         return;
       }
     })
-  };
+        console.log("sayonara");
+        this.router.navigate(['/', 'signin']);
+        this.dialogRef.close();
+  }
+
 }

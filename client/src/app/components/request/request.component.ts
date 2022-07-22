@@ -12,13 +12,17 @@ export class RequestComponent implements OnInit {
   constructor( public webSocketService:SocketService, private router: Router,) { }
 
   ngOnInit() {
-      this.webSocketService.client.subscribe("/lawyers/randomDes",(data:any)=>{
-        console.log("msg",data);
+    this.webSocketService.openConnection();
+    this.webSocketService.client.connect({},(frame)=>{
+      // at least one subscribe must be in the initial connection for socket to work
+      this.webSocketService.client.subscribe("/lawyers/public",(data)=>{
+        console.log(data);
       });
+    });
   }
 
   signin() {
-    this.router.navigate(['/','main']);
+    this.router.navigate(['/','signin']);
   }
 
   send() {

@@ -51,13 +51,6 @@ export class MainPageComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.webSocketService.openConnection();
-    this.webSocketService.client.connect({},(frame)=>{
-      // at least one subscribe must be in the initial connection for socket to work
-      this.webSocketService.client.subscribe("/lawyers/public",(data)=>{
-        console.log(data);
-      });
-    });
     this.ref.detectChanges();
     if(this.socketService.language == "french") 
     {
@@ -155,6 +148,9 @@ export class MainPageComponent implements OnInit{
             let profil:Profil=new Profil(data);
             this.userService.setProfil(profil);
             this.userService.setUseremail(this.email);
+            this.webSocketService.client.subscribe("/lawyers/randomDes",(data:any)=>{
+              console.log("msg",data);
+            });
             this.router.navigate(['/', 'profil']);
           },
           (error:HttpErrorResponse)=>{

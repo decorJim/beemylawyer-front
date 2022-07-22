@@ -10,10 +10,10 @@ import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {
-    path: '', component: MainPageComponent, data: {animation:'isRight'}
+    path: '', component: RequestComponent, data: {animation:'isRight'}
   },
   { 
-    path: 'main', component: MainPageComponent, data: {animation:'isRight'}
+    path: 'signin', component: MainPageComponent, data: {animation:'isRight'}
   },
 
   {
