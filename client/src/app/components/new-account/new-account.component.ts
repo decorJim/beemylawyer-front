@@ -4,10 +4,9 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { URL } from '../../../../constants';
 import { English } from '@app/interfaces/Langues';
-import { SocketService } from '@app/services/socket/oldsocket';
 import { RouterOutlet } from '@angular/router';
 import { fader } from '@assets/animations';
-import { LightGrey, DarkGrey, DeepPurple, LightBlue, LightPink } from '@app/interfaces/Themes';
+import { LightGrey } from '@app/interfaces/Themes';
 
 
 
@@ -39,7 +38,6 @@ export class NewAccountComponent implements OnInit {
 
 
   constructor(
-    private socketService: SocketService,
     public dialog: MatDialog,
     private http: HttpClient,
     private router: Router,
@@ -57,36 +55,11 @@ export class NewAccountComponent implements OnInit {
     this.error6 = English.error6;
     this.error7 = English.error7;
   
-    if(this.socketService.theme == "light grey"){
-      document.getElementById("buttonMain6")!.style.backgroundColor = LightGrey.main;
-      document.getElementById("buttonMain6")!.style.color = LightGrey.text;
-      document.getElementById("title2")!.style.backgroundColor = LightGrey.main;
-      document.getElementById("title2")!.style.color = LightGrey.text;
-    }
-    else if(this.socketService.theme == "dark grey"){
-      document.getElementById("buttonMain6")!.style.backgroundColor = DarkGrey.main;
-      document.getElementById("buttonMain6")!.style.color = DarkGrey.text;
-      document.getElementById("title2")!.style.backgroundColor = DarkGrey.main;
-      document.getElementById("title2")!.style.color = DarkGrey.text;
-    }
-    else if(this.socketService.theme == "deep purple") {      
-      document.getElementById("buttonMain6")!.style.backgroundColor = DeepPurple.main;
-      document.getElementById("buttonMain6")!.style.color = DeepPurple.text;
-      document.getElementById("title2")!.style.backgroundColor = DeepPurple.main;
-      document.getElementById("title2")!.style.color = DeepPurple.text;
-    }
-    else if(this.socketService.theme == "light blue") {
-      document.getElementById("buttonMain6")!.style.backgroundColor = LightBlue.main;
-      document.getElementById("buttonMain6")!.style.color = LightBlue.text;
-      document.getElementById("title2")!.style.backgroundColor = LightBlue.main;
-      document.getElementById("title2")!.style.color = LightBlue.text;
-    }
-    else if(this.socketService.theme == "light pink") {
-      document.getElementById("buttonMain6")!.style.backgroundColor = LightPink.main;
-      document.getElementById("buttonMain6")!.style.color = LightPink.text;
-      document.getElementById("title2")!.style.backgroundColor = LightPink.main;
-      document.getElementById("title2")!.style.color = LightPink.text;
-    }
+    document.getElementById("buttonMain6")!.style.backgroundColor = LightGrey.main;
+    document.getElementById("buttonMain6")!.style.color = LightGrey.text;
+    document.getElementById("title2")!.style.backgroundColor = LightGrey.main;
+    document.getElementById("title2")!.style.color = LightGrey.text;
+    
   }
 
 
@@ -96,8 +69,7 @@ export class NewAccountComponent implements OnInit {
   }
 
   image(element: any) {
-    this.socketService.avatarNumber = element.textContent.trim();
-    this.playAudio("ui2.wav");
+
   }
 
   closeClick(): boolean {
@@ -108,7 +80,6 @@ export class NewAccountComponent implements OnInit {
 
       document.getElementById("error")!.style.visibility= "visible";
       document.getElementById("error")!.innerHTML = this.error1;
-      this.playAudio("error.wav");
       let erreur= document.getElementById("buttonMain6")!;
       erreur.className = "erreuAnimation";
       erreur.classList.remove("erreuAnimation");
@@ -119,7 +90,7 @@ export class NewAccountComponent implements OnInit {
     else if (this.pass != this.passRepeat) {
       document.getElementById("error")!.style.visibility= "visible";
       document.getElementById("error")!.innerHTML = this.error5;
-      this.playAudio("error.wav");
+
       let erreur= document.getElementById("buttonMain6")!;
       erreur.className = "erreuAnimation";
       erreur.classList.remove("erreuAnimation");
@@ -152,36 +123,14 @@ export class NewAccountComponent implements OnInit {
     }
   }
 
-  playAudio(title: string){
-    if (this.socketService.mute == false) {
-      let audio = new Audio();
-      audio.src = "../../../assets/" + title;
-      audio.load();
-      audio.play();
-    }
-  }
+  
 
   cancelClick(): void {
     this.router.navigate([""]);
-    this.playAudio("ui2.wav");
   }
 
   showAvatar() {
-    if(this.socketService.avatarNumber == "1") {
       document.getElementById("avatarDE")!.style.backgroundImage = "url(../../../assets/av1.png)";
-    }
-    else if(this.socketService.avatarNumber == "2") {
-      document.getElementById("avatarDE")!.style.backgroundImage = "url(../../../assets/av2.png)";
-    }
-    else if(this.socketService.avatarNumber == "3") {
-      document.getElementById("avatarDE")!.style.backgroundImage = "url(../../../assets/av3.png)";
-    }
-    else if(this.socketService.avatarNumber == "4") {
-      document.getElementById("avatarDE")!.style.backgroundImage = "url(../../../assets/av4.png)";
-    }
-    else if(this.socketService.avatarNumber == "5") {
-      document.getElementById("avatarDE")!.style.backgroundImage = "url(../../../assets/av5.png)";
-    }
   }
 
   sleep(ms:any) {
@@ -189,8 +138,6 @@ export class NewAccountComponent implements OnInit {
   }
 
   async openAvatar(): Promise<void> {
-    this.playAudio("ui2.wav");
-
     await this.sleep(2000);
     this.showAvatar();
   }

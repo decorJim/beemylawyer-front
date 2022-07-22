@@ -23,11 +23,8 @@ import { NewAccountComponent } from './components/new-account/new-account.compon
 
 import { SettingsComponent } from './components/settings/settings.component';
 
-import { AcceptRequestComponent } from './components/accept-request/accept-request.component';
 import { ProfilComponent } from './components/profil/profil.component';
-import { UsersComponent } from './components/users/users.component';
 
-import { EnterPasswordComponent } from './components/enter-password/enter-password.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditProfilComponent } from './components/editProfil/editProfil.component';
@@ -49,10 +46,7 @@ import { EditProfilComponent } from './components/editProfil/editProfil.componen
         MainPageComponent,
         NewAccountComponent,
         SettingsComponent,
-        AcceptRequestComponent,
         ProfilComponent,
-        UsersComponent,
-        EnterPasswordComponent,
         LogoutComponent,
         EditProfilComponent,
     ],

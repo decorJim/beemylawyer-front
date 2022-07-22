@@ -8,7 +8,7 @@ import { URL } from '../../../../constants';
   providedIn: 'root'
 })
 
-export class SocketService {
+export class OldSocketService {
 
   private socket: Socket;
   public nickname: string;

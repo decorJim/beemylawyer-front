@@ -43,13 +43,6 @@ export class ProfilComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.webSocketService.openConnection();
-    this.webSocketService.client.connect({},(frame)=>{
-      console.log(frame);
-      this.webSocketService.client.subscribe("/lawyers/public",(data)=>{
-        console.log("msg",data);
-      });
-    });
     this.profilTitle = English.profilTitle;
     this.info1 = English.info1;
     this.info2 = English.info2;

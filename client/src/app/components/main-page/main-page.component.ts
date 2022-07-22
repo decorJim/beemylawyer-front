@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { SocketService } from '@app/services/socket/oldsocket';
+
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { URL } from '../../../../constants';
@@ -11,6 +11,9 @@ import { fader } from '@assets/animations';
 import { UserService } from '@app/services/user.service';
 import { ProfilInterface } from '@app/interfaces/ProfilInterface';
 import { Profil } from '@app/classes/Profil';
+import { SocketService } from '@app/services/socket.service';
+import { OldSocketService } from '@app/services/socket/oldsocket';
+
 
 
 @Component({
@@ -37,16 +40,24 @@ export class MainPageComponent implements OnInit{
 
   constructor(
     public dialog: MatDialog,
-    private socketService: SocketService,
+    private socketService: OldSocketService,
     private http: HttpClient,
     private router: Router,
     private ref:ChangeDetectorRef,
-    private userService:UserService
+    private userService:UserService,
+    public webSocketService:SocketService
   ) { 
    
   }
 
   ngOnInit(): void {
+    this.webSocketService.openConnection();
+    this.webSocketService.client.connect({},(frame:any)=>{
+      console.log(frame);
+      this.webSocketService.client.subscribe("/lawyers/public",(data:any)=>{
+        console.log("msg",data);
+      });
+    });
     this.ref.detectChanges();
     if(this.socketService.language == "french") 
     {
