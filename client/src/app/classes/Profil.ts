@@ -10,9 +10,9 @@ export class Profil {
     private skills:String[];
     private pic:String;
     private phonenumber:String;
+    private fullname:String;
 
     constructor(profilInterface:ProfilInterface) {
-        console.log(profilInterface.skills);
       this.id=profilInterface.id;
       this.useremail=profilInterface.useremail;
       this.fname=profilInterface.fname;
@@ -22,6 +22,7 @@ export class Profil {
       this.skills=profilInterface.skills;
       this.pic=profilInterface.pic;
       this.phonenumber=profilInterface.phonenumber;
+      this.setFullName();
     }
 
     getId():String {
@@ -38,6 +39,10 @@ export class Profil {
 
     getLname():String {
         return this.lname;
+    }
+
+    getFullName():String {
+        return this.fullname;
     }
 
     getBio():String {
@@ -74,6 +79,10 @@ export class Profil {
 
     setLname(lname:String):void {
         this.lname=lname;
+    }
+
+    setFullName() {
+        this.fullname=this.getFname()+" "+this.getLname();
     }
 
     setBio(bio:String):void {

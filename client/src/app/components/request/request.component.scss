@@ -48,3 +48,53 @@
 }
 
 
+.lawyers-title {
+    text-align: center;
+}
+
+.lawyer-box {
+    overflow:scroll;
+    width: fit-content;
+    height: 550px;
+    /*** let outer box move to the center ***/
+    margin: 0 auto;
+}
+
+.lawyer-container {
+    justify-content: center;
+    text-align: center;
+    height: 150px;
+}
+
+.content-section {
+    /*** lets 2 element display in same line ***/
+    display: flex;
+    width: fit-content;
+}
+
+.lawyer {
+    width: 350px;
+    height: 130px;
+    text-align: center;
+    display: block;
+    border:1px solid black;
+}
+
+.actionCell {
+    color: #9A75F0; 
+    float: right;
+    size:5px;
+    height: fit-content;
+}
+
+
+.add-request {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+
+

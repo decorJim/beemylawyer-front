@@ -7,11 +7,34 @@
   </div>
 </div>
 
-<p>
-  request works!
-</p>
-
-
 <div>
+  <br>
+    <div class="lawyers-title">
+      <h4>Our lawyer members</h4>
+    </div>
+    <div class="lawyer-box">
+      <tr class="lawyer-container" *ngFor="let profil of this.profils" aria aria-rowspan="7">
+        <div class="content-section">
+          <mat-card class="lawyer">
+            <mat-card-header>
+              {{ profil.getFullName() }}
+            </mat-card-header>
+            <mat-card-content>
+              <h3>email:</h3>
+              <div>{{ profil.getUseremail() }}</div>
+              <h3>current position</h3>
+              <div>{{ profil.getCposition() }}</div>  
+            </mat-card-content>
+          </mat-card>
+          <button class="action-cell" ><i class="fa fa-trash-o"></i></button>
+        </div>
+        <br>
+      </tr>
+    </div>
+  <br>
+</div>
+
+
+<div class="add-request">
   <button mat-button (click)="send()">add request</button>
 </div>

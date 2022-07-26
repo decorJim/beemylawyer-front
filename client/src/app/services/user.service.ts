@@ -9,6 +9,7 @@ export class UserService {
   private useremail:String;
   private userProfil:Profil;
   private fullname:String;
+  public users:Map<String,Profil>=new Map();
 
   constructor() {
 
@@ -24,7 +25,6 @@ export class UserService {
 
   setProfil(profil:Profil) {
     this.userProfil=profil;
-    this.fullname=profil.getFname()+" "+profil.getLname();
   }
 
   getProfil():Profil {

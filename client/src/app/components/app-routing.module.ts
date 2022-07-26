@@ -15,7 +15,6 @@ const routes: Routes = [
   { 
     path: 'signin', component: MainPageComponent, data: {animation:'isRight'}
   },
-
   {
     path: 'register', component: NewAccountComponent, data: {animation:'isRight'}
   },

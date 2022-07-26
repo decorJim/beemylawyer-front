@@ -110,7 +110,7 @@ export class NewAccountComponent implements OnInit {
       }
       this.http.post<any>(link,account).subscribe((data:any)=>{
          console.log(data);
-         this.router.navigate([""]);
+         this.router.navigate(["signin"]);
       },
       (error:HttpErrorResponse)=>{
         if(error.status==408) {
