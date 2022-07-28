@@ -40,4 +40,14 @@ export class SocketService {
     this.webSocket.close();
   }
 
+  public init() {
+    this.openConnection();
+    this.client.connect({},(frame)=>{
+      // at least one subscribe must be in the initial connection for socket to work
+      this.client.subscribe("/lawyers/public",(data)=>{
+        console.log(data);
+      });
+    });
+  }
+
 }

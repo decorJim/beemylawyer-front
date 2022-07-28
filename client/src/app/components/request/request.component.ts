@@ -20,13 +20,9 @@ export class RequestComponent implements OnInit {
   profils:Profil[]=[];
 
   ngOnInit() {
-    this.webSocketService.openConnection();
-    this.webSocketService.client.connect({},(frame)=>{
-      // at least one subscribe must be in the initial connection for socket to work
-      this.webSocketService.client.subscribe("/lawyers/public",(data)=>{
-        console.log(data);
-      });
-    });
+    if(this.webSocketService.client==null) {
+      this.webSocketService.init();
+    }
 
     let link:string=URL+"user/profil/all";
     this.http.get(link).subscribe((data:any)=>{

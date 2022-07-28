@@ -51,6 +51,9 @@ export class MainPageComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    if(this.webSocketService.client==null) {
+      this.webSocketService.init();
+    }
     this.ref.detectChanges();
     if(this.socketService.language == "french") 
     {
