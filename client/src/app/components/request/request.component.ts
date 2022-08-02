@@ -3,9 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profil } from '@app/classes/Profil';
 import { ProfilInterface } from '@app/interfaces/ProfilInterface';
+import { ProfilService } from '@app/services/profil.service';
 import { SocketService } from '@app/services/socket.service';
 import { UserService } from '@app/services/user.service';
+import { Message } from 'stompjs';
 import { URL } from '../../../../constants';
+
 
 @Component({
   selector: 'app-request',
@@ -14,43 +17,59 @@ import { URL } from '../../../../constants';
 })
 export class RequestComponent implements OnInit {
 
-  constructor( public webSocketService:SocketService, private router: Router, public userService:UserService, public http:HttpClient) { }
+  constructor( 
+    public webSocketService:SocketService, 
+    private router: Router, 
+    public userService:UserService, 
+    public http:HttpClient,
+    public profilService:ProfilService
+    ) { }
 
   BASE_URL:String=URL;
   profils:Profil[]=[];
 
   ngOnInit() {
-    if(this.webSocketService.client==null) {
-      this.webSocketService.init();
-    }
+    this.webSocketService.openConnection();
+
+    this.webSocketService.getStompClient().connect({},(frame)=>{
+      this.manageNewProfils();
+      this.manageEditedProfil();
+    })
+  
 
     let link:string=URL+"user/profil/all";
     this.http.get(link).subscribe((data:any)=>{
       data.forEach((profil:ProfilInterface)=>{
         let profilObj:Profil=new Profil(profil);
         this.userService.users.set(profilObj.getId(),profilObj);
-        this.updateProfils();
+        this.profilService.updateProfils();
       });
     });
-    console.info("la map",this.userService.users);
   }
-
-
-  updateProfils():void {
-    this.profils=[];
-    this.userService.users.forEach((v,k)=>{
-       this.profils.push(v);
-    });
-    console.table(this.profils);
-  }
-
 
   signin() {
     this.router.navigate(['/','signin']);
   }
 
   send() {
-    this.webSocketService.sendRan();
+    this.webSocketService.getStompClient().send("/app/random",{},"213");
+  }
+
+  manageNewProfils() {
+    this.webSocketService.getStompClient().subscribe("/lawyers/public",(data:Message)=>{
+      let profilInterface:ProfilInterface=JSON.parse(data.body);
+      let profil:Profil=new Profil(profilInterface);
+      this.userService.users.set(profil.getId(),profil);
+      this.profilService.updateProfils();
+    });
+  }
+
+  manageEditedProfil() {
+    this.webSocketService.getStompClient().subscribe("/lawyers/editedProfil",(data:Message)=>{
+      let profilInterface:ProfilInterface=JSON.parse(data.body);
+      let profil:Profil=new Profil(profilInterface); 
+      this.userService.users.set(profil.getId(),profil);
+    });
   }
 
 }

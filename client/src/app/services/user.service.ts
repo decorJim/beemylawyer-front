@@ -9,7 +9,7 @@ export class UserService {
   private useremail:String;
   private userProfil:Profil;
   private fullname:String;
-  public users:Map<String,Profil>=new Map();
+  public users:Map<String,Profil>=new Map();  // id and profil 
 
   constructor() {
 
@@ -34,6 +34,8 @@ export class UserService {
   getFullname():String {
     return this.fullname;
   }
+
+
 
 
 

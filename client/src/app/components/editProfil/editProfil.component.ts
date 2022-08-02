@@ -104,7 +104,7 @@ export class EditProfilComponent implements OnInit {
         let profil:Profil=new Profil(data);
         this.userService.setProfil(profil);
         this.setInitialValue();
-        this.webSocketService.sendMessage();
+        this.webSocketService.getStompClient().send("/app/profil",{},JSON.stringify(this.userService.getProfil()));
       });
     }
     console.log(this.skillDifferent().length);

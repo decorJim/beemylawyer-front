@@ -3,9 +3,9 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { URL } from '../../../../constants';
-import { French, English} from '@app/interfaces/Langues';
+import { English} from '@app/interfaces/Langues';
 import { MatDialog } from '@angular/material/dialog';
-import { LightGrey, DarkGrey, DeepPurple, LightBlue, LightPink } from '@app/interfaces/Themes';
+import { LightGrey} from '@app/interfaces/Themes';
 import { RouterOutlet } from '@angular/router';
 import { fader } from '@assets/animations';
 import { UserService } from '@app/services/user.service';
@@ -51,27 +51,15 @@ export class MainPageComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    if(this.webSocketService.client==null) {
-      this.webSocketService.init();
-    }
+    this.webSocketService.openConnection();
     this.ref.detectChanges();
-    if(this.socketService.language == "french") 
-    {
-      this.options = French.options;
-      this.error1 = French.error1;
-      this.error2 = French.error2;
-      this.error3 = French.error3;
-      this.error4 = French.error4;
-    }
-    else {
+
       this.options = English.options;
       this.error1 = English.error1;
       this.error2 = English.error2;
       this.error3 = English.error3;
       this.error4 = English.error4;
-    }
 
-    if(this.socketService.theme == "light grey"){
       document.getElementById("buttonMain")!.style.backgroundColor = LightGrey.main;
       document.getElementById("buttonMain")!.style.color = LightGrey.text;
       document.getElementById("buttonMain2")!.style.backgroundColor = LightGrey.main;
@@ -80,47 +68,7 @@ export class MainPageComponent implements OnInit{
       document.getElementById("requestButton")!.style.color = LightGrey.text;
       document.getElementById("title01")!.style.backgroundColor = LightGrey.main;
       document.getElementById("title01")!.style.color = LightGrey.text;
-    }
-    else if(this.socketService.theme == "dark grey"){
-      document.getElementById("buttonMain")!.style.backgroundColor = DarkGrey.main;
-      document.getElementById("buttonMain")!.style.color = DarkGrey.text;
-      document.getElementById("buttonMain2")!.style.backgroundColor = DarkGrey.main;
-      document.getElementById("buttonMain2")!.style.color = DarkGrey.text;
-      document.getElementById("buttonMain3")!.style.backgroundColor = DarkGrey.main;
-      document.getElementById("buttonMain3")!.style.color = DarkGrey.text;
-      document.getElementById("title01")!.style.backgroundColor = DarkGrey.main;
-      document.getElementById("title01")!.style.color = DarkGrey.text;
-    }
-    else if(this.socketService.theme == "deep purple") {       
-      document.getElementById("buttonMain")!.style.backgroundColor = DeepPurple.main;
-      document.getElementById("buttonMain")!.style.color = DeepPurple.text;
-      document.getElementById("buttonMain2")!.style.backgroundColor = DeepPurple.main;
-      document.getElementById("buttonMain2")!.style.color = DeepPurple.text;
-      document.getElementById("buttonMain3")!.style.backgroundColor = DeepPurple.main;
-      document.getElementById("buttonMain3")!.style.color = DeepPurple.text;
-      document.getElementById("title01")!.style.backgroundColor = DeepPurple.main;
-      document.getElementById("title01")!.style.color = DeepPurple.text;
-    }
-    else if(this.socketService.theme == "light blue") { 
-      document.getElementById("buttonMain")!.style.backgroundColor = LightBlue.main;
-      document.getElementById("buttonMain")!.style.color = LightBlue.text;
-      document.getElementById("buttonMain2")!.style.backgroundColor = LightBlue.main;
-      document.getElementById("buttonMain2")!.style.color = LightBlue.text;
-      document.getElementById("buttonMain3")!.style.backgroundColor = LightBlue.main;
-      document.getElementById("buttonMain3")!.style.color = LightBlue.text;
-      document.getElementById("title01")!.style.backgroundColor = LightBlue.main;
-      document.getElementById("title01")!.style.color = LightBlue.text;
-    }
-    else if(this.socketService.theme == "light pink") {  
-      document.getElementById("buttonMain")!.style.backgroundColor = LightPink.main;
-      document.getElementById("buttonMain")!.style.color = LightPink.text;
-      document.getElementById("buttonMain2")!.style.backgroundColor = LightPink.main;
-      document.getElementById("buttonMain2")!.style.color = LightPink.text;
-      document.getElementById("buttonMain3")!.style.backgroundColor = LightPink.main;
-      document.getElementById("buttonMain3")!.style.color = LightPink.text;
-      document.getElementById("title01")!.style.backgroundColor = LightPink.main;
-      document.getElementById("title01")!.style.color = LightPink.text;
-    }
+    
   }
 
   prepareRoute(outlet: RouterOutlet) {
@@ -151,7 +99,7 @@ export class MainPageComponent implements OnInit{
             let profil:Profil=new Profil(data);
             this.userService.setProfil(profil);
             this.userService.setUseremail(this.email);
-            this.webSocketService.client.subscribe("/lawyers/randomDes",(data:any)=>{
+            this.webSocketService.getStompClient().subscribe("/lawyers/randomDes",(data:any)=>{
               console.log("msg",data);
             });
             this.router.navigate(['/', 'profil']);
