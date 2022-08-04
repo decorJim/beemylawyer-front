@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {  MatDialogRef } from '@angular/material/dialog';
 import { Profil } from '@app/classes/Profil';
+import { ProfilInterface } from '@app/interfaces/ProfilInterface';
 import { SocketService } from '@app/services/socket.service';
 import { UserService } from '@app/services/user.service';
 import { URL } from '../../../../constants';
@@ -101,7 +102,7 @@ export class EditProfilComponent implements OnInit {
 
       this.http.put<any>(link,profile).subscribe((data)=>{
         console.log("data received",data);
-        let profil:Profil=new Profil(data);
+        let profil:Profil=new Profil(data as ProfilInterface);
         this.userService.setProfil(profil);
         this.setInitialValue();
         this.webSocketService.getStompClient().send("/app/profil",{},JSON.stringify(this.userService.getProfil()));

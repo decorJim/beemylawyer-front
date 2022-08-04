@@ -8,4 +8,5 @@ export interface ProfilInterface {
     skills:String[];
     pic:String;
     phonenumber:String;
+    stars:Number;
 }

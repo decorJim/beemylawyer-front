@@ -99,6 +99,10 @@ export class MainPageComponent implements OnInit{
             let profil:Profil=new Profil(data);
             this.userService.setProfil(profil);
             this.userService.setUseremail(this.email);
+
+            this.userService.display=true;
+            this.userService.setProfilToDisplay(this.userService.getProfil());
+            
             this.webSocketService.getStompClient().subscribe("/lawyers/randomDes",(data:any)=>{
               console.log("msg",data);
             });

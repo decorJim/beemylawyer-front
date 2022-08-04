@@ -72,4 +72,15 @@ export class RequestComponent implements OnInit {
     });
   }
 
+  toProfil(profilId:String) {
+    let link:string=this.BASE_URL.concat(`user/profil/id/`+`${profilId}`);
+    this.http.get(link).subscribe((data)=>{
+      console.log(data);
+      let profil:Profil=new Profil(data as ProfilInterface);
+      this.userService.display=false;
+      this.userService.setProfilToDisplay(profil);
+      this.router.navigate(["/","profil"])
+    })
+  }
+
 }

@@ -9,6 +9,7 @@ import { English } from '@app/interfaces/Langues';
 import { UserService } from '../../services/user.service';
 import { EditProfilComponent } from '../editProfil/editProfil.component';
 import { SocketService } from '@app/services/socket.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,8 +18,6 @@ import { SocketService } from '@app/services/socket.service';
   styleUrls: ['./profil.component.scss']
 })
 export class ProfilComponent implements OnInit {
-
-  //private readonly BASE_URL: string = URL;
 
   public avatar: string;
   public useremail: string;
@@ -39,7 +38,8 @@ export class ProfilComponent implements OnInit {
   constructor(
     public userService:UserService,
     public dialog: MatDialog,
-    public webSocketService:SocketService
+    public webSocketService:SocketService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +52,6 @@ export class ProfilComponent implements OnInit {
     this.info5 = English.info5;
     this.remove = English.remove;
 
-    
   }
 
   
@@ -65,6 +64,10 @@ export class ProfilComponent implements OnInit {
       height: '60%',
       width: '43%'
     });
+  }
+
+  requestsPage() {
+    this.router.navigate(["/","request"])
   }
 
   

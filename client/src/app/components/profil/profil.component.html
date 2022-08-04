@@ -2,11 +2,11 @@
 
 <div class="wrapper">
     <div id="menu-container">
-        <button id="back" routerLink = "/albums" >
+        <button id="back" (click)="requestsPage()" >
           <i class="fa fa-chevron-circle-left" aria-hidden="true" ></i>
         </button>
         <div>Profil</div>
-        <button (click)="logout()"  id="logout"><i class="fa fa-sign-out" aria-hidden="true" ></i></button>
+        <button (click)="logout()"  id="logout" *ngIf="this.userService.display"><i class="fa fa-sign-out" aria-hidden="true" ></i></button>
     </div>
 </div>
 
@@ -19,13 +19,13 @@
            <img class="header-image">
          </div>
          <mat-card-title class="name">
-            {{this.userService.getProfil().getFullName() }}
+            {{this.userService.getProfilToDisplay().getFullName() }}
          </mat-card-title>
          <mat-card-subtitle>
             <div class="contact">Contact Info: </div>
             &nbsp;
             <div class="contact-info">
-               {{ this.userService.getProfil().getUseremail() }} &nbsp;   {{ this.userService.getProfil().getPhoneNumber() }}
+               {{ this.userService.getProfilToDisplay().getUseremail() }} &nbsp;   {{ this.userService.getProfilToDisplay().getPhoneNumber() }}
             </div>
          </mat-card-subtitle>
       </mat-card-header>
@@ -33,21 +33,21 @@
       <mat-card-content>
          <h3>Bio:</h3>
          <div>
-            {{ this.userService.getProfil().getBio() }}
+            {{ this.userService.getProfilToDisplay().getBio() }}
          </div>
          <br>
          <h3>current position:</h3>
          <div>
-            {{ this.userService.getProfil().getCposition() }}
+            {{ this.userService.getProfilToDisplay().getCposition() }}
          </div>
          <br>
          <h3>skills:</h3> 
          <ul>
-          <li *ngFor="let skill of this.userService.getProfil().getSkills()">{{ skill }}</li>
+          <li *ngFor="let skill of this.userService.getProfilToDisplay().getSkills()">{{ skill }}</li>
          </ul>
          <br>
         </mat-card-content>
   </mat-card>
   <br>
-  <button mat-button class="edit" (click)="openEditProfil()">Edit Profil</button>
+  <button #editButton mat-button class="edit"  (click)="openEditProfil()" [disabled]="!this.userService.display" *ngIf="this.userService.display">Edit Profil</button>
 </div>

@@ -8,8 +8,11 @@ export class UserService {
 
   private useremail:String;
   private userProfil:Profil;
-  private fullname:String;
+
+  private profilToDisplay:Profil;
+
   public users:Map<String,Profil>=new Map();  // id and profil 
+  public display:boolean=true;
 
   constructor() {
 
@@ -31,9 +34,15 @@ export class UserService {
     return this.userProfil;
   }
 
-  getFullname():String {
-    return this.fullname;
+  setProfilToDisplay(profil:Profil) {
+    this.profilToDisplay=profil;
   }
+
+  getProfilToDisplay():Profil {
+    return this.profilToDisplay;
+  }
+
+
 
 
 

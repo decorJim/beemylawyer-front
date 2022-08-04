@@ -51,15 +51,15 @@ export class LogoutComponent implements OnInit {
     let link = this.BASE_URL + "account/logout";
     this.http.post<any>(link,{ useremail:this.userService.getUseremail()  }).subscribe((data: any) => {
       if (data.message == "SUCCESS") {
+        this.userService.display=false;
         this.dialogRef.close();
-        
       }   
     },(error:HttpErrorResponse)=>{
       console.error(error);
       console.log(error.status);
       console.log(error.error.message);
       if(error.error.message=="FAILED") {
-        console.log("WRONG PASSWORD");
+        console.log("WRONG PASSWORD"); 
         return;
       }
     })

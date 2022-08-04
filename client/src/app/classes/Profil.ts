@@ -10,6 +10,7 @@ export class Profil {
     private skills:String[];
     private pic:String;
     private phonenumber:String;
+    private stars:Number;
     private fullname:String;
 
     constructor(profilInterface:ProfilInterface) {
@@ -22,6 +23,7 @@ export class Profil {
       this.skills=profilInterface.skills;
       this.pic=profilInterface.pic;
       this.phonenumber=profilInterface.phonenumber;
+      this.stars=profilInterface.stars;
       this.setFullName();
     }
 
@@ -63,6 +65,10 @@ export class Profil {
 
     getPhoneNumber():String {
         return this.phonenumber;
+    }
+
+    getStars():Number {
+        return this.stars;
     }
 
     setId(id:String):void {
@@ -114,5 +120,9 @@ export class Profil {
         if (index > -1) {
             this.skills.splice(index, 1); 
         }
+    }
+
+    setStars(stars:Number):void {
+        this.stars=stars;
     }
 }
