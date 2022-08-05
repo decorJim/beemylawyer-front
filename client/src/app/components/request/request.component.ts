@@ -69,6 +69,9 @@ export class RequestComponent implements OnInit {
       let profilInterface:ProfilInterface=JSON.parse(data.body);
       let profil:Profil=new Profil(profilInterface); 
       this.userService.users.set(profil.getId(),profil);
+      if(profil.getId()==this.userService.getProfilToDisplay().getId()) {
+        this.userService.setProfilToDisplay(profil);
+      }
     });
   }
 
