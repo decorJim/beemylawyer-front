@@ -8,10 +8,8 @@ import { MomentModule } from 'ngx-moment';
 import { AlertMessageComponent } from './components/alert-message/alert-message.component';
 import { MaterialModules } from './app-material.module';
 import { AppComponent } from './components/app/app.component';
-import { ParameterMenuComponent } from './components/parameter-menu/parameter-menu.component';
-import { ParameterDirective } from './components/parameter-menu/parameter.directive';
 
-import { WorkspaceComponent } from './components/workspace/workspace.component';
+
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
@@ -21,7 +19,6 @@ import { AppRoutingModule } from './components/app-routing.module';
 
 import { NewAccountComponent } from './components/new-account/new-account.component';
 
-import { SettingsComponent } from './components/settings/settings.component';
 
 import { ProfilComponent } from './components/profil/profil.component';
 
@@ -37,16 +34,10 @@ import { RequestComponent } from './components/request/request.component';
 @NgModule({
     declarations: [
         AppComponent,  // add component that can use angular material declared below here
-        ParameterMenuComponent,
-        WorkspaceComponent,
-        ParameterMenuComponent,
-        WorkspaceComponent,
-        ParameterDirective,
         ErrorMessageComponent,
         AlertMessageComponent,
         MainPageComponent,
         NewAccountComponent,
-        SettingsComponent,
         ProfilComponent,
         LogoutComponent,
         EditProfilComponent,

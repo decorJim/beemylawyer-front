@@ -5,7 +5,6 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { NewAccountComponent } from './new-account/new-account.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RequestComponent } from './request/request.component';
-import { SettingsComponent } from './settings/settings.component';
 
 
 const routes: Routes = [
@@ -17,9 +16,6 @@ const routes: Routes = [
   },
   {
     path: 'register', component: NewAccountComponent, data: {animation:'isRight'}
-  },
-  {
-    path:'settings',component:SettingsComponent
   },
   {
     path:'profil',component:ProfilComponent
