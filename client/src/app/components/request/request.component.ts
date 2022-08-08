@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Profil } from '@app/classes/Profil';
 import { ProfilInterface } from '@app/interfaces/ProfilInterface';
@@ -8,6 +9,7 @@ import { SocketService } from '@app/services/socket.service';
 import { UserService } from '@app/services/user.service';
 import { Message } from 'stompjs';
 import { URL } from '../../../../constants';
+import { NewRequestComponent } from '../new-request/new-request.component';
 
 
 @Component({
@@ -22,7 +24,8 @@ export class RequestComponent implements OnInit {
     private router: Router, 
     public userService:UserService, 
     public http:HttpClient,
-    public profilService:ProfilService
+    public profilService:ProfilService,
+    public dialog: MatDialog,
     ) { }
 
   BASE_URL:String=URL;
@@ -84,6 +87,15 @@ export class RequestComponent implements OnInit {
       this.userService.setProfilToDisplay(profil);
       this.router.navigate(["/","profil"])
     })
+  }
+
+  openNewRequest(lawyerId:String) {
+    
+    NewRequestComponent.lawyerId=lawyerId;
+    this.dialog.open(NewRequestComponent,{
+      height: '60%',
+      width: '43%'
+    });
   }
 
 }

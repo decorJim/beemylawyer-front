@@ -2,7 +2,7 @@
 
 <div class="wrapper">
   <div id="menu-container">
-      <div>Profil</div>
+      <div>Members</div>
       <button mat-raised-button class="signin" (click)="signin()" >sign in</button>
   </div>
 </div>
@@ -26,7 +26,7 @@
               <div>{{ profil.getCposition() }}</div>  
             </mat-card-content>
           </mat-card>
-          <button class="action-cell" ><i class="fa fa-trash-o"></i></button>
+          <button class="action-cell" (click)="openNewRequest(profil.getId())"><mat-icon>add</mat-icon></button>
         </div>
         <br>
       </tr>
@@ -35,6 +35,4 @@
 </div>
 
 
-<div class="add-request">
-  <button mat-button (click)="send()">add request</button>
-</div>
+
