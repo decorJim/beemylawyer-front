@@ -94,7 +94,7 @@ export class RequestComponent implements OnInit {
     NewRequestComponent.lawyerId=lawyerId;
     this.dialog.open(NewRequestComponent,{
       height: '60%',
-      width: '43%'
+      width: '30%'
     });
   }
 
