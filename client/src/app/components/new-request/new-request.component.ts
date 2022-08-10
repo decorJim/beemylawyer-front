@@ -36,10 +36,7 @@ export class NewRequestComponent implements OnInit {
 
  
   ngOnInit() {
-
-      console.log(this.websocketService.getStompClient().ws);
-    
-      
+   
       this.lawyer=this.userService.users.get(this.lawyerId) as Profil;
       this.checkoutForm= this.formBuilder.group({
         id:'',

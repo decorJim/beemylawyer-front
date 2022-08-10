@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { English} from '@app/interfaces/Langues';
+import { SocketService } from '@app/services/socket.service';
 import { UserService } from '@app/services/user.service';
 import { URL } from '../../../../constants';
 
@@ -30,7 +31,8 @@ export class LogoutComponent implements OnInit {
     public dialogRefAlert:MatDialog,
     public http:HttpClient,
     public router:Router,
-    public userService:UserService
+    public userService:UserService,
+    public webSocketService:SocketService
   ) { }
 
   ngOnInit() {

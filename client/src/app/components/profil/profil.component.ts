@@ -43,7 +43,7 @@ export class ProfilComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.myNewRequests();
     this.profilTitle = English.profilTitle;
     this.info1 = English.info1;
     this.info2 = English.info2;
@@ -52,6 +52,18 @@ export class ProfilComponent implements OnInit {
     this.info5 = English.info5;
     this.remove = English.remove;
 
+  }
+
+  myNewRequests() {
+    this.webSocketService.openConnection();
+    this.webSocketService.getStompClient().connect({},(frame)=>{
+      this.webSocketService.getStompClient().subscribe("/user/".concat(this.userService.getProfil().getId() as string).concat("/new-request"),
+      (data)=>{
+        data=JSON.parse(data.body);
+        console.log(data);
+      });
+    })
+   
   }
 
   
@@ -67,6 +79,7 @@ export class ProfilComponent implements OnInit {
   }
 
   requestsPage() {
+    this.webSocketService.closeConnection();
     this.router.navigate(["/","request"])
   }
 

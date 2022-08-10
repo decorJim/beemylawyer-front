@@ -12,7 +12,7 @@ import { Client } from 'stompjs';
 })
 export class SocketService {
 
-  webSocket:WebSocket;
+  socket:WebSocket;
   client:Client;
 
   constructor(
@@ -24,12 +24,18 @@ export class SocketService {
 
   public openConnection():void {
     /** use ws in link to tell that it's for socket connection **/
-    let socket = new SockJS(`http://localhost:8080/websocket`);
-    this.client=Stomp.over(socket);
+    this.socket = new SockJS(`http://localhost:8080/websocket`);
+    this.client=Stomp.over(this.socket);
   };
 
   getStompClient():Client {
     return this.client;
+  }
+
+  public closeConnection() {
+    this.client.disconnect(()=>{
+      console.log("disconnected");
+    });
   }
 
 /*
@@ -41,27 +47,6 @@ export class SocketService {
     this.client.send("/app/random",{},"213");
   }
 
-  public closeConnection() {
-    this.client.disconnect(()=>{
-      console.log("disconnected");
-    });
-  }
-
- manageNewProfils() {
-  this.client.subscribe("/lawyers/public",(data:Stomp.Message)=>{
-    let profilInterface:ProfilInterface=JSON.parse(data.body);
-    let profil:Profil=new Profil(profilInterface);
-    this.userService.users.set(profil.getId(),profil);
-    this.profilService.updateProfils();
-  });
- }
-
- manageEditedProfil() {
-  this.client.subscribe("/lawyers/editedProfil",(data:Stomp.Message)=>{
-    let profilInterface:ProfilInterface=JSON.parse(data.body);
-    let profil:Profil=new Profil(profilInterface); 
-    this.userService.users.set(profil.getId(),profil);
-  });
 }*/
 
 }

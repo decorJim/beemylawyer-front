@@ -12,8 +12,13 @@
 
 <br>
 
-<div class="profile-container">
-  <mat-card>
+<div class="profil-container">
+
+  <div class="my-files">
+   MY FILES
+  </div>
+
+  <mat-card class="mat-card">
       <mat-card-header>
          <div mat-card-avatar>
            <img class="header-image">
@@ -47,7 +52,11 @@
          </ul>
          <br>
         </mat-card-content>
+        <button #editButton mat-button class="edit"  (click)="openEditProfil()" [disabled]="!this.userService.display" *ngIf="this.userService.display">Edit Profil</button>
   </mat-card>
-  <br>
-  <button #editButton mat-button class="edit"  (click)="openEditProfil()" [disabled]="!this.userService.display" *ngIf="this.userService.display">Edit Profil</button>
+  <div class="request-container">
+   MY REQUESTS
+  </div>
+  <br style="clear: left;" />
 </div>
+

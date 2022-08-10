@@ -95,7 +95,6 @@ export class MainPageComponent implements OnInit{
         if(data.message=="SUCCESS") {
           let profilLink=this.BASE_URL+"user/profil/"+this.email;
           this.http.get<any>(profilLink).subscribe((data:ProfilInterface)=>{
-            console.log(data);
             let profil:Profil=new Profil(data);
             this.userService.setProfil(profil);
             this.userService.setUseremail(this.email);
@@ -106,6 +105,7 @@ export class MainPageComponent implements OnInit{
             this.webSocketService.getStompClient().subscribe("/lawyers/randomDes",(data:any)=>{
               console.log("msg",data);
             });
+            this.webSocketService.closeConnection();
             this.router.navigate(['/', 'profil']);
           },
           (error:HttpErrorResponse)=>{
@@ -145,6 +145,7 @@ export class MainPageComponent implements OnInit{
   }
 
   registerClick(): void {
+    this.webSocketService.closeConnection();
     this.router.navigate(['/', 'register']);
   }
 
@@ -153,7 +154,7 @@ export class MainPageComponent implements OnInit{
   }
 
   requestPage():void {
-    console.log("request page")
+    this.webSocketService.closeConnection();
     this.router.navigate(['/','request']);
   }
 }

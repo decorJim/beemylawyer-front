@@ -33,7 +33,6 @@ export class RequestComponent implements OnInit {
 
   ngOnInit() {
     this.webSocketService.openConnection();
-
     this.webSocketService.getStompClient().connect({},(frame)=>{
       this.manageNewProfils();
       this.manageEditedProfil();
@@ -51,6 +50,7 @@ export class RequestComponent implements OnInit {
   }
 
   signin() {
+    this.webSocketService.closeConnection();
     this.router.navigate(['/','signin']);
   }
 
