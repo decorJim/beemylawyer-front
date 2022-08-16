@@ -10,6 +10,12 @@ import { UserService } from '../../services/user.service';
 import { EditProfilComponent } from '../editProfil/editProfil.component';
 import { SocketService } from '@app/services/socket.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { URL } from '../../../../constants';
+import { RequestInterface } from '@app/interfaces/RequestInterface';
+import { Request } from '@app/classes/Request';
+import { ProfilInterface } from '@app/interfaces/ProfilInterface';
+import { Profil } from '@app/classes/Profil';
 
 
 @Component({
@@ -26,6 +32,8 @@ export class ProfilComponent implements OnInit {
   public lastLoggedOut: string;
   public friends: Array<string>;
 
+  private BASE_URL=URL;
+
   profilTitle: string;
   info1: string;
   info2: string;
@@ -40,10 +48,17 @@ export class ProfilComponent implements OnInit {
     public dialog: MatDialog,
     public webSocketService:SocketService,
     private router: Router,
+    private http:HttpClient
   ) { }
 
   ngOnInit(): void {
-    this.myNewRequests();
+    this.getMyRequests();
+    this.webSocketService.openConnection();
+    this.webSocketService.getStompClient().connect({},(frame)=>{
+      this.myNewRequests();
+      this.profilChanges();
+    });
+  
     this.profilTitle = English.profilTitle;
     this.info1 = English.info1;
     this.info2 = English.info2;
@@ -54,17 +69,39 @@ export class ProfilComponent implements OnInit {
 
   }
 
+  getMyRequests() {
+     let link:string=this.BASE_URL.concat("request/lawyer/").concat(this.userService.getProfil().getId() as string);
+     let requests:Request[]=[];
+     this.http.get(link).subscribe((data:any)=>{
+      data.forEach((reqIn:RequestInterface)=>{
+         let request:Request=new Request(reqIn);
+         requests.push(request);
+      });
+      this.userService.setMyRequests(requests);
+      console.log(this.userService.getMyRequests())
+     })
+
+  }
+
+  profilChanges() {
+    this.webSocketService.getStompClient().subscribe("/lawyers/editedProfil",(data)=>{
+      let profilInt=JSON.parse(data.body);
+      let profil:Profil=new Profil(profilInt as ProfilInterface);
+      if(this.userService.getProfilToDisplay().getId()==profil.getId()) {
+          this.userService.setProfilToDisplay(profil);
+      }  
+    });
+  }
+
   myNewRequests() {
-    this.webSocketService.openConnection();
-    this.webSocketService.getStompClient().connect({},(frame)=>{
       this.webSocketService.getStompClient().subscribe("/user/".concat(this.userService.getProfil().getId() as string).concat("/new-request"),
       (data)=>{
-        data=JSON.parse(data.body);
-        console.log(data);
+        let requestInt:RequestInterface=JSON.parse(data.body);
+        let request:Request=new Request(requestInt);
+        this.userService.getMyRequests().push(request);
       });
-    })
-   
   }
+
 
   
   logout() {

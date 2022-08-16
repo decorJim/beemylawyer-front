@@ -42,6 +42,7 @@ export class NewRequestComponent implements OnInit {
         id:'',
         lawyerId:this.lawyerId,
         lawyerName:this.lawyer.getFullName(),
+        creationDate:'',
         state:this.state,
         clientName:'',
         phoneNumber:'',

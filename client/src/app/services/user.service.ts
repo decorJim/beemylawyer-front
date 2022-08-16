@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Profil } from '@app/classes/Profil';
+import { Request } from '@app/classes/Request';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class UserService {
 
   private useremail:String;
   private userProfil:Profil;
-
+  private myRequests:Request[]=[];
   private profilToDisplay:Profil;
 
   public users:Map<String,Profil>=new Map();  // id and profil 
@@ -42,7 +43,13 @@ export class UserService {
     return this.profilToDisplay;
   }
 
+  getMyRequests():Request[] {
+    return this.myRequests;
+  }
 
+  setMyRequests(requests:Request[]):void {
+    this.myRequests=requests;
+  }
 
 
 

@@ -56,6 +56,25 @@
   </mat-card>
   <div class="request-container">
    MY REQUESTS
+
+      <tr class="request-container" *ngFor="let request of this.userService.getMyRequests()" aria aria-rowspan="7">
+       <!-- <div class="content-section">  -->
+          <mat-card class="request">
+            <mat-card-header>
+              {{ request.getClientName() }}
+            </mat-card-header>
+            <mat-card-content>
+              <h3>creation date:</h3>
+              <div>{{ request.getCreationDate() }}</div>
+              <h3>description</h3>
+              <div>{{ request.getState() }}</div>  
+            </mat-card-content>
+          </mat-card>
+
+        <!--</div> -->
+        <br>
+      </tr>
+
   </div>
   <br style="clear: left;" />
 </div>
