@@ -9,11 +9,11 @@ export class UserService {
 
   private useremail:String;
   private userProfil:Profil;
-  private myRequests:Request[]=[];
+  public myRequests:Request[]=[];
   private profilToDisplay:Profil;
 
   public users:Map<String,Profil>=new Map();  // id and profil 
-  public display:boolean=true;
+  public display:boolean=false;
 
   constructor() {
 

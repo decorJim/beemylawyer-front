@@ -54,28 +54,27 @@
         </mat-card-content>
         <button #editButton mat-button class="edit"  (click)="openEditProfil()" [disabled]="!this.userService.display" *ngIf="this.userService.display">Edit Profil</button>
   </mat-card>
-  <div class="request-container">
-   MY REQUESTS
-
-      <tr class="request-container" *ngFor="let request of this.userService.getMyRequests()" aria aria-rowspan="7">
-       <!-- <div class="content-section">  -->
-          <mat-card class="request">
-            <mat-card-header>
-              {{ request.getClientName() }}
-            </mat-card-header>
-            <mat-card-content>
-              <h3>creation date:</h3>
-              <div>{{ request.getCreationDate() }}</div>
-              <h3>description</h3>
-              <div>{{ request.getState() }}</div>  
-            </mat-card-content>
-          </mat-card>
-
-        <!--</div> -->
-        <br>
-      </tr>
-
+  <div *ngIf="this.userService.display">
+      <div class="request-title">
+         <h3>My requests</h3>
+      </div>
+      <div class="request-box">
+         <tr *ngFor="let request of this.userService.getMyRequests()" aria aria-rowspan="7">
+       
+            <div class="request">
+               <div>
+                 client name: {{ request.getClientName() }}
+               </div>
+               <div>
+                 creation date: {{ request.getCreationDate() }}
+               </div>
+               <div>
+                 state: {{ request.getState() }}
+               </div>
+            </div>
+            <br>
+         </tr>
+      </div>
   </div>
-  <br style="clear: left;" />
 </div>
 

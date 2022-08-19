@@ -136,20 +136,25 @@
     background-color: aliceblue;
 }
 
-.request-container {
-    background-color: blue;
-    width: 240px;
-    height: 300px;
-   // float: left;
+.request-title {
+   width: 253px;
+   height: 50px;
+   position: absolute;
+   left: 89%;
+   top: 20%;
+   transform: translate(-50%, -50%);
+}
 
+/************************************/
+
+.request-box {
+   width: 270px;
+   height: 400px;
    position: absolute;
    left: 85%;
    top: 50%;
    transform: translate(-50%, -50%);
-}
-
-.myrequest-box {
-    text-align: center;
+   overflow:scroll;
 }
 
 .content-section {
@@ -160,9 +165,13 @@
 
 .request {
     width: 250px;
-    height: 130px;
+    height: 75px;
     text-align: center;
     display: block;
     border:1px solid black;
 }
 
+.request:hover {
+    cursor: pointer;
+    background-color: rgb(169, 163, 163);
+}
