@@ -1,8 +1,13 @@
+/*******
+ component where a profil is display if lawyer sign in he can view his own profil, the edit button and all of their requests
+ if the viewer is a client or another lawyer the edit button and the requests won't be visible to them
+ * 
+ * 
+ * 
+ * 
+ */
 
 import { Component, OnInit } from '@angular/core';
-
-//import { URL } from '../../../../constants';
-
 import { LogoutComponent } from '../logout/logout.component';
 import { MatDialog } from '@angular/material/dialog';
 import { English } from '@app/interfaces/Langues';
@@ -16,6 +21,7 @@ import { RequestInterface } from '@app/interfaces/RequestInterface';
 import { Request } from '@app/classes/Request';
 import { ProfilInterface } from '@app/interfaces/ProfilInterface';
 import { Profil } from '@app/classes/Profil';
+import { MyRequestDetailsComponent } from '../my-request-details/my-request-details.component';
 
 
 @Component({
@@ -119,6 +125,17 @@ export class ProfilComponent implements OnInit {
     this.webSocketService.closeConnection();
     this.router.navigate(["/","request"])
   }
+
+  openRequestWithId(id:String) {
+    console.log(id);
+    MyRequestDetailsComponent.requestId=id;
+    this.dialog.open(MyRequestDetailsComponent,{
+      height: '60%',
+      width: '32%'
+    });
+  }
+
+
 
   
 

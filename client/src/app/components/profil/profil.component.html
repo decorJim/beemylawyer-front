@@ -61,7 +61,7 @@
       <div class="request-box">
          <tr *ngFor="let request of this.userService.getMyRequests()" aria aria-rowspan="7">
        
-            <div class="request">
+            <div class="request" (click)=" openRequestWithId(request.getId())">
                <div>
                  client name: {{ request.getClientName() }}
                </div>

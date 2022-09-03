@@ -27,6 +27,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditProfilComponent } from './components/editProfil/editProfil.component';
 import { RequestComponent } from './components/request/request.component';
 import { NewRequestComponent } from './components/new-request/new-request.component';
+import { MyRequestDetailsComponent } from './components/my-request-details/my-request-details.component';
 
 
 
@@ -44,6 +45,7 @@ import { NewRequestComponent } from './components/new-request/new-request.compon
         EditProfilComponent,
         RequestComponent,
         NewRequestComponent,
+        MyRequestDetailsComponent
     ],
     imports: [
         BrowserModule,

@@ -1,3 +1,12 @@
+/*
+ *
+ *
+ component where clients can view every lawyer, view their profil and add requests
+ * 
+ * 
+ */
+
+
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
