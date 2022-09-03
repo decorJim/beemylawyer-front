@@ -1,8 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Profil } from '@app/classes/Profil';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Request } from '@app/classes/Request';
 import { UserService } from '@app/services/user.service';
+import { URL } from '../../../../constants';
 
 @Component({
   selector: 'app-my-request-details',
@@ -12,14 +14,17 @@ import { UserService } from '@app/services/user.service';
 export class MyRequestDetailsComponent implements OnInit {
 
   constructor(
-    private userService:UserService
+    private userService:UserService,
+    private http: HttpClient,
+    public dialog: MatDialogRef<MyRequestDetailsComponent>
   ) { }
 
   requestForm:FormGroup;
   static requestId:String="";
   myRequest:Request;
 
-  model:Profil;
+  private readonly BASE_URL: string = URL;
+
 
   get requestId() {
     return MyRequestDetailsComponent.requestId;
@@ -27,8 +32,21 @@ export class MyRequestDetailsComponent implements OnInit {
 
   ngOnInit() {
      this.myRequest=this.userService.getMyRequests().find((request)=>request.getId()==this.requestId)!;
-     
-     this.model=this.userService.getProfil();
+  }
+
+  acceptRequest() {
+     this.myRequest.setState("Accepted");
+     console.info("myR",this.myRequest);
+     console.info("array R",this.userService.getMyRequests().find((request)=>request.getId()==this.myRequest.getId())!);
+     let link:string=this.BASE_URL+"request/accept";
+     this.http.post(link,this.myRequest).subscribe((data)=>{
+      console.log(data);
+      this.dialog.close();
+     })
+  }
+
+  cancel() {
+    this.dialog.close();
   }
 
 }
