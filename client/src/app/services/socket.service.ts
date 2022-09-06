@@ -5,6 +5,7 @@ import * as Stomp from 'stompjs';
 import SockJS from 'sockjs-client';
 import { ProfilService } from './profil.service';
 import { Client } from 'stompjs';
+import { URL } from '../../../constants';
 
 
 @Injectable({
@@ -14,6 +15,7 @@ export class SocketService {
 
   socket:WebSocket;
   client:Client;
+  BASE_URL:string=URL;
 
   constructor(
     public userService:UserService,
@@ -24,7 +26,8 @@ export class SocketService {
 
   public openConnection():void {
     /** use ws in link to tell that it's for socket connection **/
-    this.socket = new SockJS(`http://localhost:8080/websocket`);
+    let socketURL=this.BASE_URL.concat(`websocket`)
+    this.socket = new SockJS(socketURL);
     this.client=Stomp.over(this.socket);
   };
 
