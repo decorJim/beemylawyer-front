@@ -1,76 +1,84 @@
 .wrapper {
     position: relative;
-}
-
-#menu-container{
-    font-size: 20px;
+    background-color: #6c6630db;
     width:100%;
-    background-color: #d6dbdb;
+    height: 5%;
+
+    display: flex;
+    flex-wrap: wrap;
 }
 
-
-#menu-container div{
-    display:inline-block;
-    width:130px;
-    cursor: pointer;
-    padding: 5px 15px;
-    background: var(--light-color);
-    color: var(--dark-color-a);
-    border: 0;
-    font-size: 25px;
-    display: inline-block;
-
-    font-family:50px "Roboto", "Helvetica Neue", sans-serif;
-    font-weight: 900;
-    position: absolute;
-    left:725px;
+.left-header {
+    flex:1;
 }
 
-#menu-container button{
-    display:inline-block;
-    width:130px;
-    cursor: pointer;
-    padding: 5px 15px;
-    background: var(--light-color);
-    color: var(--dark-color-a);
-    border: 0;
-    font-size: 25px;
-    display: inline-block;
+.title {
+    width:fit-content;
+    height:fit-content;
+
+    font-size:20px;
+    font-weight:bold;
+    color: #ffffff;
+
+    font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
+
+    margin-top: 8px;
+    text-align: center;
+}
+
+.right-header {
+    flex: 1;
+    display: flex;
+    flex-direction: row-reverse; // the more child component we add to container will add to left side
+    align-items: center;
 }
 
 .signin {
-    position: relative;
-    left:1400px;
-    background-color: white;
-    font-size: 9px;
-    height: fit-content;
     width: fit-content;
+    height: fit-content;
+
+    text-align: center;
+    background-color: white;
+    font-size: 15px;
+
+    margin-right: 3px;
 }
 
+.lawyer-page-container {
+    display: flex;
+    flex:wrap;
+    width: 100%;
+    background-image: url('background.jpeg');
+}
+
+.left-page {
+    flex:1;
+    height: 800px;
+}
+
+.lawyer-page {
+    display:flex;
+    flex-direction:column;
+    width: 600px;
+    height: 800px;
+    overflow-y: auto;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.right-page {
+    flex:1;
+}
 
 .lawyers-title {
+    width:100%;
+    height: 30px;
+    font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 200;
     text-align: center;
+    margin-bottom: 10px;
 }
 
-.lawyer-box {
-    overflow:scroll;
-    width: fit-content;
-    height: 550px;
-    /*** let outer box move to the center ***/
-    margin: 0 auto;
-}
-
-.lawyer-container {
-    justify-content: center;
-    text-align: center;
-    height: 150px;
-}
-
-.content-section {
-    /*** lets 2 element display in same line ***/
-    display: flex;
-    width: fit-content;
-}
 
 .lawyer {
     width: 350px;
@@ -85,22 +93,33 @@
     background-color: rgb(169, 163, 163);
 }
 
-
-
-.actionCell {
-    color: #9A75F0; 
-    float: right;
-    size:5px;
-    height: fit-content;
-}
-
-
-.add-request {
+.mat-card-display {
     display: flex;
-    justify-content: center;
-    text-align: center;
-    margin: 0 auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 400px;
+    height: 300px;
+    
+    box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2);
 }
+
+.mat-card-display:hover {
+    background-color: rgb(222, 222, 222);
+}
+
+.mat-card-title {
+    font-size: 200;
+    font-family: Elena,-apple-system,BlinkMacSystemFont,Roboto,roboto slab,droid serif,segoe ui,system-ui,Arial,sans-serif;
+    width: 100%;
+}
+
+.action-cell {
+    width: 40px;
+    height: 40px;
+    align-items: center;
+}
+
+
 
 
 
