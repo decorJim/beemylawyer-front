@@ -1,0 +1,41 @@
+<div>
+  <div class="title">
+    <div class="title-id">Request id:</div>
+    <div class="request-id">{{this.myRequest.getId()}}</div>
+  </div>
+  <br>
+  <mat-grid-list  cols="1" rows="7" rowHeight="30px">
+    <mat-grid-tile colspan="1" aria-rowspan="2">
+        <h4>Lawyer name:</h4>
+        <div>{{this.myRequest.getLawyerName()}}</div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" aria-rowspan="3">
+        <h4>Creation date:</h4>
+        <div>{{this.myRequest.getCreationDate()}}</div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" aria-rowspan="4">
+        <h4>State:</h4>
+        <div>{{this.myRequest.getState()}}</div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" aria-rowspan="5">
+        <h4>Client name:</h4>
+        <div>{{this.myRequest.getClientName()}}</div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" aria-rowspan="6">
+      <h4>Client phone number:</h4>
+      <div>{{this.myRequest.getPhoneNumber()}}</div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" aria-rowspan="7">
+      <h4>Client email:</h4>
+      <div>{{this.myRequest.getClientEmail()}}</div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <h4>Request description:</h4>
+  <div class="description-box">{{this.myRequest.getDescription()}}</div>
+  <br>
+  <button mat-button mat-dialog-close class="cancel-button" (click)="cancel()">Cancel</button>
+  <button mat-button mat-dialog-close class="accept-button" (click)="acceptRequest()">Accept</button>
+  <br>
+</div>
+
+

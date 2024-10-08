@@ -1,0 +1,57 @@
+<h3>Make a new request</h3>
+
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="lawyerName" class="font-label">
+      Lawyer's name:
+    </label>
+    <br>
+    <div>{{ this.lawyer.getFullName() }}</div>
+  </div>
+  <br>
+  <div>
+    <label for="state" class="font-label">
+      State:
+    </label>
+    <br>
+    <div>{{ this.state }}</div>
+  </div>
+  <br>
+  <div>
+    <label for="clientName" class="font-label">
+      My Name:
+    </label>
+    <br>
+    <input id="clientName" type="text" formControlName="clientName">
+  </div>
+  <br>
+  <div>
+    <label for="clientName" class="font-label">
+      my phone number:
+    </label>
+    <br>
+    <input id="phoneNumber" type="text" formControlName="phoneNumber">
+  </div>
+  <br>
+  <div>
+    <label for="clientName" class="font-label">
+      my email:
+    </label>
+    <br>
+    <input id="clientEmail" type="text" formControlName="clientEmail">
+  </div>
+  <br>
+  <div>
+    <label for="description" class="font-label">
+      Description:
+    </label>
+    <br>
+    <textarea id="description" type="text" formControlName="description" rows="6" cols="50" maxlength="250">
+    </textarea>
+  </div>
+  <br>
+
+  <button mat-button type="submit" style="background-color:#545f5f">Send</button>
+  
+</form>

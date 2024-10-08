@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="wrapper">
+    <div id="menu-container">
+        <button id="back" (click)="requestsPage()" >
+          <i class="fa fa-chevron-circle-left" aria-hidden="true" ></i>
+        </button>
+        <div>Profil</div>
+        <button (click)="logout()"  id="logout" *ngIf="this.userService.display"><i class="fa fa-sign-out" aria-hidden="true" ></i></button>
+    </div>
+</div>
+
+<br>
+
+<div class="profil-container">
+
+  <div class="my-files">
+   MY FILES
+  </div>
+
+  <mat-card class="mat-card">
+      <mat-card-header>
+         <div mat-card-avatar>
+           <img class="header-image">
+         </div>
+         <mat-card-title class="name">
+            {{this.userService.getProfilToDisplay().getFullName() }}
+         </mat-card-title>
+         <mat-card-subtitle>
+            <div class="contact">Contact Info: </div>
+            &nbsp;
+            <div class="contact-info">
+               {{ this.userService.getProfilToDisplay().getUseremail() }} &nbsp;   {{ this.userService.getProfilToDisplay().getPhoneNumber() }}
+            </div>
+         </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+         <h3>Bio:</h3>
+         <div>
+            {{ this.userService.getProfilToDisplay().getBio() }}
+         </div>
+         <br>
+         <h3>current position:</h3>
+         <div>
+            {{ this.userService.getProfilToDisplay().getCposition() }}
+         </div>
+         <br>
+         <h3>skills:</h3> 
+         <ul>
+          <li *ngFor="let skill of this.userService.getProfilToDisplay().getSkills()">{{ skill }}</li>
+         </ul>
+         <br>
+        </mat-card-content>
+        <button #editButton mat-button class="edit"  (click)="openEditProfil()" [disabled]="!this.userService.display" *ngIf="this.userService.display">Edit Profil</button>
+  </mat-card>
+  <div *ngIf="this.userService.display">
+      <div class="request-title">
+         <h3>My requests</h3>
+      </div>
+      <div class="request-box">
+         <tr *ngFor="let request of this.userService.getMyRequests()" aria aria-rowspan="7">
+       
+            <div class="request" (click)=" openRequestWithId(request.getId())">
+               <div>
+                 client name: {{ request.getClientName() }}
+               </div>
+               <div>
+                 creation date: {{ request.getCreationDate() }}
+               </div>
+               <div>
+                 state: {{ request.getState() }}
+               </div>
+            </div>
+            <br>
+         </tr>
+      </div>
+  </div>
+</div>
+

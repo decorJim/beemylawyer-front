@@ -1,0 +1,32 @@
+.title {
+    display: flex;
+    width: max-content;
+}
+
+.title-id {
+    font-weight: 900;
+    font-size:18px;
+}
+
+.request-id {
+    font-size:18px;
+}
+
+.description-box {
+    width: 400px;
+    height: 100px;
+    border-style: solid;
+    border-color: black;
+}
+
+.cancel-button {
+    float: left;
+    background-color: #545f5f;
+}
+
+.accept-button {
+    float: right;
+    background-color: #545f5f;
+}
+
+

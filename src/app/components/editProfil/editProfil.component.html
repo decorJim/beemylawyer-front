@@ -1,0 +1,66 @@
+
+<div class="field">
+  <br>
+  <br>
+  <mat-grid-list  cols="1" rows="5" rowHeight="60px">
+    <mat-grid-tile colspan="1" aria-rowspan="1">
+      <mat-form-field class="name-form-field">
+        <input matInput placeholder="email" value="{{this.model.getUseremail()}}" [(ngModel)]='email'>
+      </mat-form-field>
+    </mat-grid-tile>
+    <br>
+    <br>
+    <mat-grid-tile colspan="1" aria-rowspan="2">
+      <mat-form-field class="name-form-field">
+       <input matInput placeholder="first name" value="{{ this.model.getFname() }}" [(ngModel)]='fname'>
+      </mat-form-field>
+    </mat-grid-tile>
+    <br>
+    <br>
+    <mat-grid-tile colspan="1" aria-rowspan="3">
+      <mat-form-field class="name-form-field" >
+       <input matInput placeholder="last name" value="{{ this.model.getLname() }}" [(ngModel)]='lname' >
+      </mat-form-field>
+    </mat-grid-tile>
+    <br>
+    <br>
+    <mat-grid-tile colspan="1" aria-rowspan="4">
+     <mat-form-field class="name-form-field">
+       <input matInput placeholder="current position"  value="{{ this.model.getCposition() }}" [(ngModel)]='cposition'>
+     </mat-form-field>
+    </mat-grid-tile>
+    <br>
+    <br>
+    <mat-grid-tile colspan="1" aria-rowspan="5">
+     <mat-form-field class="name-form-field">
+       <input matInput placeholder="phone number"  value="{{ this.model.getPhoneNumber() }}" [(ngModel)]='phonenum'>
+     </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div class="biobox">
+    <h4>bio</h4>
+    <textarea [(ngModel)] = "bio" value="{{ this.model.getBio() }}" rows="6" cols="50" maxlength="250"></textarea>
+  </div>
+
+  <br>
+    <div class="skill-title">
+      <h4>professional skills</h4>
+      <tr class="skill-container" *ngFor="let skill of this.skills" >
+          <td class="skill">{{ skill }}</td>
+          <button class="action-cell" (click)="removeSkill(skill)"><i class="fa fa-trash-o"></i></button>    
+      </tr>
+    </div>
+  <br>
+
+  <div class="skills">
+    <input #skill maxlength="22">
+    <button mat-icon-button style="background-color: blue;" (click)="addSkill(skill.value)">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <br>
+
+  <button mat-button (click)="saveProfil()" mat-dialog-close style="float: right">Ok</button>
+</div>

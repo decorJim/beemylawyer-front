@@ -1,0 +1,46 @@
+.field {
+    width: 600px;
+    height: 400px;
+    display: block;
+}
+
+.biobox {
+    border: 5px solid #FFFF00;
+    text-align: center;
+}
+
+.skill-title {
+    text-align: center;
+}
+
+.skills {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.skill {
+    width: 350px;
+    height: fit-content;
+    text-align: center;
+    display: block;
+    border:1px solid black;
+}
+
+.actionCell {
+    color: #9A75F0; 
+    float: right;
+    size:10px;
+}
+
+
+
+
+

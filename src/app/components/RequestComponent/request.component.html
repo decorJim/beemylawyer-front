@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="wrapper">
+  <div class="left-header"></div>
+  <div class="title">Bee My Laywer</div>
+  <div class="right-header">
+    <button mat-raised-button class="signin" (click)="signin()" >sign in</button>
+  </div>
+</div>
+
+<div>
+    <br>
+    <div class="lawyers-title">
+      Our lawyer members
+    </div>
+    <div class="lawyer-page-container">
+
+       <div class="left-page"></div>
+
+       <div class="lawyer-page"> 
+            <mat-card class="mat-card-display" *ngFor="let profil of this.profilService.profils" (click)="toProfil(profil.getId())">
+               <mat-card-header class="mat-card-title">
+                 {{ profil.getFullName() }}
+               </mat-card-header>
+               <mat-card-subtitle>{{ profil.getCposition() }}</mat-card-subtitle>
+               <mat-card-content class="card-content-container">
+                <div style="font-weight: bold;">Contact:</div>
+                 <div>{{ profil.getUseremail() }}</div>
+                 <div>{{ profil.getPhoneNumber()}}</div>
+                 <br>
+                 <div style="font-weight: bold;">about me:</div>
+                 <div>{{ profil.getBio() }}</div>
+                 <br>
+                 <button class="action-cell" (click)="openNewRequest(profil.getId())"><mat-icon>add</mat-icon></button>  
+               </mat-card-content>
+            </mat-card>
+       </div>
+       <div class="right-page"></div>
+
+    </div>
+  <br>
+</div>
+
+
+

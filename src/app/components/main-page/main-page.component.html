@@ -1,0 +1,42 @@
+<div class="wrapper">
+    <div class="left-header"></div>
+    <div class="title">Bee My Laywer</div>
+    <div class="right-header"></div>
+  </div>
+    
+<div class="outer">
+                <div class="middle">
+                    <div class="inner">
+                        Enter your email and a password and click on the register button 
+                        <h2 id="color">Welcome !</h2>
+    
+                        <main class="content">
+                            <router-outlet #outlet = "outlet"></router-outlet>
+                        <div class="pseudo">
+                            <mat-form-field class="input" floatLabel="always" appearance="outline">
+                                <mat-label>email </mat-label>
+                                <input matInput id="email" type="text" name="email" [(ngModel)]="email">
+                            </mat-form-field> 
+                        </div>
+    
+                        <div class="pass">    
+                            <mat-form-field class="input" floatLabel="always" appearance="outline">
+                                <mat-label>password</mat-label>
+                                <input matInput id="password" type="password" name="password" [(ngModel)]="password">
+                            </mat-form-field> 
+                        </div>
+                    </main>
+    
+                        <div>
+                            <p id="error">Error</p>
+                        </div>
+    
+                        <button mat-raised-button id="buttonMain" (click)="registerClick()">register</button>
+                        <button mat-raised-button id="buttonMain2" (click)="closeClick()">login</button>
+                        <button mat-raised-button id="requestButton" (click)="requestPage()">request a lawyer</button>
+
+    
+                    </div>
+                </div>
+</div>
+
